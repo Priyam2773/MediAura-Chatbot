@@ -4,6 +4,22 @@ AI-powered Medical Chatbot built using **Flask**, **LangChain**, **Google Gemini
 
 ---
 
+## 🌐 Live Demo
+
+🚀 **Try the chatbot here:**
+
+**https://mediaura-chatbot.onrender.com/**
+
+---
+
+## 🚀 Features
+
+- Medical Question Answering
+- Retrieval-Augmented Generation (RAG)
+- Google Gemini 2.5 Flash
+- Pinecone Vector Database
+- Flask Web Interface
+
 # 🚀 Features
 
 - Medical Question Answering
