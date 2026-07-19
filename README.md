@@ -182,3 +182,10 @@ MediAura-Chatbot
 # 📜 License
 
 This project is licensed under the MIT License.
+
+# MediAura
+
+AI-powered Medical Chatbot built using **Flask**, **LangChain**, **Google Gemini**, **Pinecone**, and **HuggingFace Embeddings**.
+
+### 👨‍💻 Developed by **Priyam Rai**
+
