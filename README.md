@@ -1,88 +1,27 @@
 # MediAura
 
-# Build-a-Complete-Medical-Chatbot-with-Gemini-LangChain-Pinecone-Flask-AWS
-
-## 🚀 How to Run
-
-### Step 1: Clone the repository
-
-```bash
-git clone https://github.com/<your-github-username>/MediAura.git
-```
-
-Replace `<your-github-username>` with your GitHub username.
+AI-powered Medical Chatbot built using **Flask**, **LangChain**, **Google Gemini**, **Pinecone**, and **HuggingFace Embeddings**.
 
 ---
 
-## Step 2: Create a Conda Environment
+# 🚀 Features
 
-```bash
-conda create -n medibot python=3.10 -y
-```
-
-Activate the environment:
-
-```bash
-conda activate medibot
-```
+- Medical Question Answering
+- Retrieval-Augmented Generation (RAG)
+- Google Gemini 2.5 Flash
+- Pinecone Vector Database
+- Flask Web Interface
 
 ---
 
-## Step 3: Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## Step 4: Create a `.env` File
-
-Create a `.env` file in the root directory and add your API keys.
-
-```ini
-PINECONE_API_KEY=your_pinecone_api_key
-GOOGLE_API_KEY=your_google_ai_studio_api_key
-```
-
----
-
-## Step 5: Store Embeddings in Pinecone
-
-Run the following command to create embeddings and upload them to Pinecone.
-
-```bash
-python store_index.py
-```
-
----
-
-## Step 6: Run the Flask Application
-
-```bash
-python app.py
-```
-
----
-
-## Step 7: Open the Application
-
-Open your browser and visit:
-
-```text
-http://127.0.0.1:8080
-```
-
----
-
-# 🛠️ Tech Stack
+# 🛠 Tech Stack
 
 - Python
 - Flask
 - LangChain
-- Google Gemini 2.5 Flash
+- Google Gemini
+- Pinecone
 - HuggingFace Embeddings
-- Pinecone Vector Database
 - HTML
 - CSS
 - Bootstrap
@@ -90,83 +29,156 @@ http://127.0.0.1:8080
 
 ---
 
-# ☁️ AWS CI/CD Deployment using GitHub Actions
+# ⚙️ Local Setup
 
-## 1. Login to AWS Console
-
----
-
-## 2. Create an IAM User
-
-Grant the following permissions:
-
-- AmazonEC2ContainerRegistryFullAccess
-- AmazonEC2FullAccess
-
----
-
-## 3. Create an Amazon ECR Repository
-
-Example:
-
-```
-315865595366.dkr.ecr.us-east-1.amazonaws.com/medicalbot
-```
-
-Save the repository URI.
-
----
-
-## 4. Launch an EC2 Instance (Ubuntu)
-
----
-
-## 5. Install Docker on EC2
-
-Update packages:
+## 1. Clone the Repository
 
 ```bash
-sudo apt-get update -y
-sudo apt-get upgrade -y
+git clone https://github.com/<your-github-username>/MediAura-Chatbot.git
+cd MediAura-Chatbot
 ```
 
-Install Docker:
+---
+
+## 2. Create a Virtual Environment
 
 ```bash
-curl -fsSL https://get.docker.com -o get-docker.sh
+python -m venv venv
+```
 
-sudo sh get-docker.sh
+Activate it:
 
-sudo usermod -aG docker ubuntu
+### Windows
 
-newgrp docker
+```bash
+venv\Scripts\activate
+```
+
+### Linux/macOS
+
+```bash
+source venv/bin/activate
 ```
 
 ---
 
-## 6. Configure EC2 as a Self-Hosted GitHub Runner
+## 3. Install Dependencies
 
-Go to:
-
+```bash
+pip install -r requirements.txt
 ```
-GitHub Repository
-→ Settings
-→ Actions
-→ Runners
-→ New Self-hosted Runner
-```
-
-Follow the commands displayed by GitHub.
 
 ---
 
-## 7. Configure GitHub Secrets
+## 4. Create a `.env` File
 
-Add the following repository secrets:
+```env
+PINECONE_API_KEY=your_pinecone_api_key
+GOOGLE_API_KEY=your_google_api_key
+```
 
-- AWS_ACCESS_KEY_ID
-- AWS_SECRET_ACCESS_KEY
-- AWS_DEFAULT_REGION
-- ECR_REPO
-- PINECONE_API_KEY
-- GOOGLE_API_KEY
+---
+
+## 5. Upload Documents to Pinecone
+
+```bash
+python store_index.py
+```
+
+Run this command only once after adding your PDFs.
+
+---
+
+## 6. Run the Application
+
+```bash
+python app.py
+```
+
+Open:
+
+```
+http://127.0.0.1:8080
+```
+
+---
+
+# ☁️ Deploy on Render
+
+## 1. Push the Project to GitHub
+
+```bash
+git add .
+git commit -m "Initial Commit"
+git push origin main
+```
+
+---
+
+## 2. Create a Web Service on Render
+
+- New Web Service
+- Connect your GitHub repository
+
+---
+
+## 3. Build Command
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 4. Start Command
+
+```bash
+gunicorn app:app
+```
+
+---
+
+## 5. Environment Variables
+
+Add the following variables in Render:
+
+```
+PINECONE_API_KEY=your_pinecone_api_key
+GOOGLE_API_KEY=your_google_api_key
+```
+
+---
+
+## 6. Deploy
+
+Click **Deploy Web Service**.
+
+Once deployment completes, your chatbot will be available at:
+
+```
+https://your-app-name.onrender.com
+```
+
+---
+
+# 📂 Project Structure
+
+```
+MediAura-Chatbot
+│
+├── app.py
+├── store_index.py
+├── requirements.txt
+├── runtime.txt
+├── .python-version
+├── src/
+├── templates/
+├── static/
+└── data/
+```
+
+---
+
+# 📜 License
+
+This project is licensed under the MIT License.
